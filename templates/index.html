@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Transcription</title>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <style>
+        body { font-family: sans-serif; }
+        #transcription { border: 1px solid #ccc; padding: 10px; min-height: 100px; white-space: pre-wrap; } /* pre-wrap for line breaks */
+    </style>
+</head>
+<body>
+    <h1>Live Transcription</h1>
+    <div id="transcription">
+        </div>
+
+    <script type="text/javascript">
+        var socket = io(); // Connect to the namespace
+
+        socket.on('connect', function() {
+            console.log('Connected to WebSocket');
+        });
+
+        socket.on('transcription_update', function(message) {
+            console.log('Transcription update:', message.text);
+            document.getElementById('transcription').innerText  += " " + message.text; // Update the div with transcription
+        });
+    </script>
+</body>
+</html>
