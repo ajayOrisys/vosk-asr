@@ -60,6 +60,7 @@ def transcribe_microphone(samplerate, device, model_lang):
             logger.info(f"Samplerate set to device default: {samplerate}") # Log samplerate
 
         if model_lang is None:
+            # Hard coded the in_en_model for now. change it to using model_lang as parameter
             model = Model("in_en_model")
             logger.info("Using default English (US) model")
         else:
