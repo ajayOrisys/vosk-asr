@@ -1,0 +1,5 @@
+argparse
+sounddevice
+vosk
+flask
+flask_socketio
